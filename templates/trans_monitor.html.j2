@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformers MVAR moitoring</title>
+    <link href="{{ url_for('static', filename='lib/jquery.dataTables.min.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Employees List</h1>
+
+    <!-- For loop logic of jinja template -->
+    <table id="transTable">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in data['ictData'] %}
+            <tr  {% if (emp['color']==1) %} style="background-color: red"{% endif %} >
+                <td>{{emp['id']}}</td>
+                <td>{{emp['name']}}</td>
+                <td>{{emp['phone']}}</td>
+                <td>{{emp['email']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script src="{{ url_for('static', filename='lib/jquery-3.5.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='trans_monitor.js') }}"></script>
+</body>
+
+</html>
